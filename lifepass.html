@@ -5,7 +5,7 @@
 		<script src="http://qunarzz.com/jquery/prd/jquery-1.10.1.js" charset="utf-8"></script>
 		<style>
 .body{
-	width: 430px;
+	margin: 10px auto;
 	text-align: center;
 }
 #birth{
@@ -21,13 +21,12 @@
 	text-align: center;
 }
 #ctn{
-	width: 420px;
-	border: solid 5px #ddd;
+	border: solid 5px #eee;
 }
 .block{
 	width: 12px;
 	height: 12px;
-	border: solid 1px #ddd;
+	border: solid 1px #eee;
 	float: left;
 	background: #fff;
 }
@@ -38,6 +37,9 @@
 	display: none;
 }
 		</style>
+		<style id="append-styles">
+
+		</style>
 		<title></title>
 	</head>
 	<body>
@@ -47,6 +49,19 @@
 			<div id="ctn"></div>
 		</div>
 		<script type="text/javascript">
+function rebuildStyles(){
+	var outWidth = window.innerWidth - 10
+	var ctnWidth = outWidth - 10
+	var blockSize = ctnWidth/30-2
+	var styleLines = [
+		'.body{width:'+outWidth+'px;}',
+		'#ctn{width:'+ctnWidth+'px;}',
+		'.block{width:'+blockSize+'px;height:'+blockSize+'px;}'
+	]
+	$('#append-styles').html(styleLines.join(''))
+}
+rebuildStyles()
+$(window).on('resize',rebuildStyles)
 var blocks = []
 for(var i=0; i<960; i++){
 	var block = $('<div class="block"><div class="block-inner"></div></div>').appendTo($('#ctn'))
