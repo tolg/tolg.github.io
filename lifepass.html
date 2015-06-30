@@ -55,12 +55,9 @@
 		</div>
 		<script type="text/javascript">
 function rebuildStyles(){
-	var outWidth = window.innerWidth - 40
-	var ctnWidth = outWidth - 10
-	var blockSize = ctnWidth/30-2
+	var innerWidth = $('#ctn').innerWidth()
+	var blockSize = innerWidth/30-2
 	var styleLines = [
-		'.body{width:'+outWidth+'px;}',
-		'#ctn{width:'+ctnWidth+'px;}',
 		'.block,.block-inner{width:'+blockSize+'px;height:'+blockSize+'px;}'
 	]
 	$('#append-styles').html(styleLines.join(''))
