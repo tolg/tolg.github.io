@@ -56,7 +56,7 @@ function rebuildStyles(){
 	var styleLines = [
 		'.body{width:'+outWidth+'px;}',
 		'#ctn{width:'+ctnWidth+'px;}',
-		'.block{width:'+blockSize+'px;height:'+blockSize+'px;}'
+		'.block,.block-inner{width:'+blockSize+'px;height:'+blockSize+'px;}'
 	]
 	$('#append-styles').html(styleLines.join(''))
 }
