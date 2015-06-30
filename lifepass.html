@@ -5,15 +5,18 @@
 		<script src="http://qunarzz.com/jquery/prd/jquery-1.10.1.js" charset="utf-8"></script>
 		<style>
 .body{
-	margin: 10px auto;
+	margin: 0 auto;
 	text-align: center;
 }
 #birth{
 	width: 98%;
+	margin: 10px auto;
 	line-height: 36px;
+	text-align: center;
 }
 .btn{
-	margin: 10px 5px;
+	margin: 10px auto;
+	width: 98%;
 	border-radius: 4px;
 	background: #f50;
 	color: #fff;
@@ -80,6 +83,7 @@ $('#birth').keyup(function(e){
 $('.btn').click(function(){render($('#birth').val())})
 
 function render(birth){
+	$('.block-inner').hide()
 	var ALL = 80*12
 	birth = new Date(birth)
 	var now = new Date()
