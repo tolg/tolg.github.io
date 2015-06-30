@@ -78,13 +78,12 @@ $('<div style="clear:both"></div>').appendTo($('#ctn'))
 
 $('#birth').keyup(function(e){
 	if(e.keyCode == 13){
-		render(this.value)
+		showPassddLife(this.value)
 	}
 })
+$('.btn').click(function(){showPassddLife($('#birth').val())})
 
-$('.btn').click(function(){render($('#birth').val())})
-
-function render(birth){
+function showPassddLife(birth){
 	$('.block-inner').hide()
 	var ALL = 80*12
 	birth = new Date(birth)
@@ -101,12 +100,26 @@ function render(birth){
 		alert('Invalid birthday!')
 		return
 	}
-	passing = 0
+	render(pass)
+}
+
+function render(userOpt){
+	if($.isNumeric(userOpt)) userOpt = {end: userOpt}
+		if(!userOpt) userOpt = {}
+	var option = {
+		start: 1,
+		end: 0,
+		speed: 10,
+		fadIenSpeed: 300
+	}
+	$.extend(option, userOpt)
+	var end = option.end - 1
+	var passing = option.start - 1
 	renderblock()
 	function renderblock(){
-		if(passing<pass){
-			blocks[passing++].children().fadeIn(500)
-			setTimeout(renderblock,30)
+		if(passing<=end){
+			blocks[passing++].children().fadeIn(option.fadeInSpeed)
+			setTimeout(renderblock,option.speed)
 		}
 	}
 }
